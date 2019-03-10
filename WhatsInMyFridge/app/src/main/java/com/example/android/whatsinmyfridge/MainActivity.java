@@ -139,15 +139,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void openCalendarDialog(View view) {
-        DatePickerFragment datePickerFragment = new DatePickerFragment();
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        Fragment prev = getSupportFragmentManager().findFragmentByTag("calendar-dialog");
-        if (prev != null) {
-            ft.remove(prev);
-        }
-        ft.addToBackStack(null);
-
-        datePickerFragment.show(ft, "calendar-dialog");
-    }
 }
