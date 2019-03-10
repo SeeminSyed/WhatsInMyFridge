@@ -48,7 +48,7 @@ public class FridgeAdapter extends RecyclerView.Adapter<FridgeAdapter.FridgeItem
         });
 
         // imageButton onclick
-        fridgeItemHolder.addToCartMinusImageButton.setOnClickListener(new View.OnClickListener() {
+        fridgeItemHolder.addToCartImageButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -71,7 +71,7 @@ public class FridgeAdapter extends RecyclerView.Adapter<FridgeAdapter.FridgeItem
         public final TextView itemExpView;
         public final TextView itemDaysLeftView;
         public final ImageButton buttonMinusImageButton;
-        public final ImageButton addToCartMinusImageButton;
+        public final ImageButton addToCartImageButton;
 
         public FridgeItemViewHolder(View itemView, FridgeAdapter adapter) {
             super(itemView);
@@ -79,7 +79,7 @@ public class FridgeAdapter extends RecyclerView.Adapter<FridgeAdapter.FridgeItem
             itemExpView = itemView.findViewById(R.id.item_expiration);
             itemDaysLeftView = itemView.findViewById(R.id.days_left);
             buttonMinusImageButton = itemView.findViewById(R.id.imageButton_minus);
-            addToCartMinusImageButton = itemView.findViewById(R.id.imageButton_shoppinglist);
+            addToCartImageButton = itemView.findViewById(R.id.imageButton_shoppinglist);
             this.mAdapter = adapter;
         }
     }
