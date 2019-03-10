@@ -48,13 +48,11 @@ public class SettingsFragment extends Fragment {
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putBoolean(NOTIFICATIONS_ON_KEY, true);
                     editor.apply();
-                    Toast.makeText(getActivity(), "saved", Toast.LENGTH_SHORT).show();
                 } else {
                     // The toggle is disabled
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putBoolean(NOTIFICATIONS_ON_KEY, false);
                     editor.apply();
-                    Toast.makeText(getActivity(), "saved", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -79,7 +77,6 @@ public class SettingsFragment extends Fragment {
                 try {
                     editor.putInt(NOTIFICATIONS_DAYS_PRIOR_KEY, Integer.parseInt(s.toString()));
                     editor.apply();
-                    Toast.makeText(getActivity(), "saved", Toast.LENGTH_SHORT).show();
                 } catch (NumberFormatException e) {
 
                 }
