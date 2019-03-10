@@ -26,7 +26,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="jar:file:/Applications/Android%20Studio.app/Contents/plugins/android/lib/android.jar!/images/material_design_icons/content/ic_add_circle_outline_black_24dp.xml" />
+                                                <entry key="url" value="jar:file:/Applications/Android%20Studio.app/Contents/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_shopping_cart_black_24dp.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -36,7 +36,8 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="outputName" value="ic_action_add_item" />
+                                      <entry key="outputName" value="ic_shoppingcart" />
+                                      <entry key="theme" value="HOLO_DARK" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -52,7 +53,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="jar:file:/Applications/Android%20Studio.app/Contents/plugins/android/lib/android.jar!/images/material_design_icons/image/ic_timelapse_black_24dp.xml" />
+                                                <entry key="url" value="jar:file:/Applications/Android%20Studio.app/Contents/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_add_shopping_cart_black_24dp.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -62,7 +63,7 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="outputName" value="ic_notification" />
+                                      <entry key="outputName" value="ic_action_add_item" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -72,7 +73,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputIconType" value="NOTIFICATION" />
+                            <entry key="outputIconType" value="ACTIONBAR" />
                           </map>
                         </option>
                       </PersistentState>
