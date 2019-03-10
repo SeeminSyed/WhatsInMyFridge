@@ -136,8 +136,20 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            // Show 2 total pages.
+            // Show 3 total pages.
             return 3;
         }
+    }
+
+    public void openCalendarDialog(View view) {
+        DatePickerFragment datePickerFragment = new DatePickerFragment();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        Fragment prev = getSupportFragmentManager().findFragmentByTag("calendar-dialog");
+        if (prev != null) {
+            ft.remove(prev);
+        }
+        ft.addToBackStack(null);
+
+        datePickerFragment.show(ft, "calendar-dialog");
     }
 }
