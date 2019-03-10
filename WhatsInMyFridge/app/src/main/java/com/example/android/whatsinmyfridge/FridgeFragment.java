@@ -47,19 +47,19 @@ public class FridgeFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//        view.findViewById(R.id.add_item_button).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                AddFridgeItemDialog dialogFragment = new AddFridgeItemDialog();
-//                FragmentTransaction ft = getFragmentManager().beginTransaction();
-//                Fragment prev = getFragmentManager().findFragmentByTag("dialog");
-//                if (prev != null) {
-//                    ft.remove(prev);
-//                }
-//                ft.addToBackStack(null);
-//
-//                dialogFragment.show(ft, "dialog");
-//            }
-//        });
+        view.findViewById(R.id.add_fridge_item_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AddFridgeItemDialog dialogFragment = new AddFridgeItemDialog();
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+                if (prev != null) {
+                    ft.remove(prev);
+                }
+                ft.addToBackStack(null);
+
+                dialogFragment.show(ft, "dialog");
+            }
+        });
     }
 }
