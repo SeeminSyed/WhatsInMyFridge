@@ -7,7 +7,6 @@ public class FridgeItem {
     public myDate expiration;
     public int daysLeft;
 
-
     /**
      * Constructor
      *

@@ -9,12 +9,12 @@
     android:background="@drawable/customborder">
 
     <TextView
-        android:id="@+id/item_name"
+        android:id="@+id/item_name_shoppinglist"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Apple"
         android:textColor="@android:color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -26,8 +26,10 @@
         android:id="@+id/imageButton_shoppinglist"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/imageButton_minus"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_shoppingcart" />
@@ -36,10 +38,12 @@
         android:id="@+id/imageButton_minus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton_shoppinglist"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton_shoppinglist"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_remove" />
 
 
