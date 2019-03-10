@@ -9,19 +9,21 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 
 public class FridgeAdapter extends RecyclerView.Adapter<FridgeAdapter.FridgeItemViewHolder> {
 
-    private final FridgeItem[] fridgeList;
+    private final ArrayList<FridgeItem> fridgeList;
 
     private LayoutInflater mInflater;
 
     /**
      *
      * @param context
-     * @param fridgeList FridgeItem[]
+     * @param fridgeList ArrayList<FridgeItem>
      */
-    public FridgeAdapter(Context context, FridgeItem[] fridgeList) {
+    public FridgeAdapter(Context context, ArrayList<FridgeItem> fridgeList) {
         mInflater = LayoutInflater.from(context);
         this.fridgeList = fridgeList;
     }
@@ -33,33 +35,41 @@ public class FridgeAdapter extends RecyclerView.Adapter<FridgeAdapter.FridgeItem
     }
 
     @Override
-    public void onBindViewHolder( FridgeItemViewHolder fridgeItemHolder, int i) {
-        fridgeItemHolder.itemNameView.setText(fridgeList[i].name);
-        fridgeItemHolder.itemExpView.setText(fridgeList[i].expiration.toString());
-        fridgeItemHolder.itemDaysLeftView.setText("" + fridgeList[i].daysLeft);
+    public void onBindViewHolder( final FridgeItemViewHolder fridgeItemHolder, final int i) {
+        fridgeItemHolder.itemNameView.setText(fridgeList.get(i).name);
+        fridgeItemHolder.itemExpView.setText(fridgeList.get(i).expiration.toString());
+        fridgeItemHolder.itemDaysLeftView.setText("" + fridgeList.get(i).daysLeft);
 
-        // imageButton onclick
+        // imageButton onclick Deleted Item from Fridge
         fridgeItemHolder.buttonMinusImageButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), "clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(v.getContext(), "Deleted Item from Fridge", Toast.LENGTH_SHORT).show();
+                fridgeList.remove(i);
+                FridgeAdapter.this.notifyDataSetChanged();
             }
         });
 
-        // imageButton onclick
+        // imageButton onclick Added to Shopping List
         fridgeItemHolder.addToCartImageButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), "tapped", Toast.LENGTH_SHORT).show();
+                Toast.makeText(v.getContext(), "Added to Shopping List", Toast.LENGTH_SHORT).show();
+
+                String name = fridgeList.get(i).name;
+
+                ShoppingListFragment.getInstance().addToShoppingList(new ShoppingListItem(name));
+
+                ShoppingListFragment.getInstance().refreshList();
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return fridgeList.length;
+        return fridgeList.size();
     }
 
     // View holder

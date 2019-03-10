@@ -9,14 +9,16 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapter.ShoppingListItemViewHolder> {
 
-    private final ShoppingListItem[] shoppingListItems;
+    private final ArrayList<ShoppingListItem> shoppingListItems;
 
     private LayoutInflater mInflater;
 
 
-    public ShoppingListAdapter(Context context, ShoppingListItem[] shoppingListItems) {
+    public ShoppingListAdapter(Context context, ArrayList<ShoppingListItem> shoppingListItems) {
         mInflater = LayoutInflater.from(context);
         this.shoppingListItems = shoppingListItems;
     }
@@ -28,31 +30,41 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapte
     }
 
     @Override
-    public void onBindViewHolder(ShoppingListItemViewHolder shoppingListItemHolder, int i) {
-        shoppingListItemHolder.itemNameView.setText(shoppingListItems[i].name);
+    public void onBindViewHolder(final ShoppingListItemViewHolder shoppingListItemHolder, final int i) {
+        shoppingListItemHolder.itemNameView.setText(shoppingListItems.get(i).name);
 
-        // imageButton onclick
+        // imageButton onclick Deleted Item from Shopping List
         shoppingListItemHolder.buttonMinusImageButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), "fight me", Toast.LENGTH_SHORT).show();
+                Toast.makeText(v.getContext(), "Deleted Item from Shopping List", Toast.LENGTH_SHORT).show();
+                shoppingListItems.remove(i);
+                ShoppingListAdapter.this.notifyDataSetChanged();
             }
         });
 
-        // imageButton onclick
+        // imageButton onclick Added to Shopping Cart
         shoppingListItemHolder.addToCartImageButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), "i win", Toast.LENGTH_SHORT).show();
+                Toast.makeText(v.getContext(), "Added to Shopping Cart", Toast.LENGTH_SHORT).show();
+//
+//                String name = shoppingListItems.get(i).name;
+//                // TODO: need the prompt to add the expiry date
+//                myDate date = null;
+//
+//                FridgeFragment.getInstance().addToFridge(new FridgeItem(name, date));
+//                shoppingListItems.remove(i);
+//                ShoppingListAdapter.this.notifyDataSetChanged();
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return shoppingListItems.length;
+        return shoppingListItems.size();
     }
 
     // View holder

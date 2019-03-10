@@ -9,23 +9,33 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+
 public class FridgeFragment extends Fragment {
 
-    private FridgeItem[] mItems;
+    private ArrayList<FridgeItem> mItems = new ArrayList<>();
     private RecyclerView mRecyclerView;
     private FridgeAdapter mAdapter;
+
+    private static FridgeFragment instance = null;
+
+    public static FridgeFragment getInstance() {
+        if(instance == null) {
+            instance = new FridgeFragment();
+        }
+        return instance;
+    }
 
     @Override
     public View onCreateView( LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
 
         // this is data for recycler view
-        FridgeItem[] itemsData = {
-                new FridgeItem("Indigo", new myDate(1, 2, 2019)),
-                new FridgeItem("Red", new myDate(3, 5, 2011)),
-                new FridgeItem("Blue", new myDate(3, 5, 2017)),
-                new FridgeItem("Green", new myDate(3, 5, 2014)),
-                new FridgeItem("Amber", new myDate(3, 5, 2016)),
-                new FridgeItem("Deep Orange", new myDate(3, 5, 2020))};
+        mItems.add(new FridgeItem("Indigo", new myDate(1, 2, 2019)));
+        mItems.add(new FridgeItem("Red", new myDate(3, 5, 2011)));
+        mItems.add(new FridgeItem("Blue", new myDate(3, 5, 2017)));
+        mItems.add( new FridgeItem("Green", new myDate(3, 5, 2014)));
+        mItems.add(new FridgeItem("Amber", new myDate(3, 5, 2016)));
+        mItems.add(new FridgeItem("Deep Orange", new myDate(3, 5, 2020)));
 
         View rootView = inflater.inflate(R.layout.fragment_fridge, container, false);
 
@@ -33,7 +43,7 @@ public class FridgeFragment extends Fragment {
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
 
         // Create an adapter and supply the data to be displayed.
-        mAdapter = new FridgeAdapter(getActivity(), itemsData);
+        mAdapter = new FridgeAdapter(getActivity(), mItems);
 
         // Connect the adapter with the RecyclerView.
         mRecyclerView.setAdapter(mAdapter);
@@ -42,6 +52,15 @@ public class FridgeFragment extends Fragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         return rootView;
+    }
+
+
+    public void addToFridge(FridgeItem item) {
+        mItems.add(item);
+    }
+
+    public void refreshList() {
+        mAdapter.notifyDataSetChanged();
     }
 
     @Override
