@@ -2,11 +2,23 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:text="Settings"
+        android:textSize="24dp"
+        android:gravity="center_horizontal"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"/>
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -26,18 +38,18 @@
         <TextView
             android:id="@+id/notifyMe"
             android:layout_width="wrap_content"
-            android:layout_height="42dp"
-            android:text="Notify me: "
-            android:textColor="#0000ff"
-            android:textSize="18sp"
+            android:layout_height="wrap_content"
+            android:text="Notify me (days before expiration): "
             android:layout_marginLeft="24dp"
-            android:layout_marginTop="100dp"
+            android:textSize="18sp"
+            android:layout_marginTop="14dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@id/notifications"
+            app:layout_constraintLeft_toLeftOf="@id/notifications"/>
 
         <ToggleButton
             android:layout_width="wrap_content"
-            android:layout_height="64dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginRight="24dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -49,16 +61,15 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:layout_marginRight="16dp"
-            android:hint="Days before expiration"
+            android:hint="1"
             app:layout_constraintEnd_toEndOf="parent"
             android:id="@+id/daysField"
             android:maxLines="1"
             android:maxWidth="190dp"
             android:inputType="number"
             android:maxLength="2"
-            app:layout_constraintTop_toBottomOf="@id/togglebutton"
+            app:layout_constraintBaseline_toBaselineOf="@id/notifyMe"
 
 
             />

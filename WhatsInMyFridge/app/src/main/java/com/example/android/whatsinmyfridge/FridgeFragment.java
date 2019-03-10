@@ -3,7 +3,9 @@ package com.example.android.whatsinmyfridge;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -62,6 +64,13 @@ public class FridgeFragment extends Fragment implements AddFridgeItemDialog.AddF
 
     public void addToFridge(FridgeItem item) {
         mItems.add(item);
+
+        // check if need to push notification
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        if(sharedPreferences.getBoolean(SettingsFragment.NOTIFICATIONS_ON_KEY, true)) {
+            
+        }
+
         refreshList();
     }
 

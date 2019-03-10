@@ -72,6 +72,7 @@ public class ShoppingListFragment extends Fragment {
 
     public void addToShoppingList(ShoppingListItem item) {
         mItems.add(item);
+        refreshList();
     }
 
     public void refreshList() {
