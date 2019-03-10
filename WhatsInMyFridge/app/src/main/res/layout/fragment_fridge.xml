@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".FridgeFragment"
-    android:screenOrientation="portrait">
+    tools:context=".FridgeFragment">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -18,10 +17,6 @@
         android:layout_marginBottom="20dp"
         android:background="@drawable/rectangular_border"
         >
-
-        <!--TODO: modify the drawable to have the grey background-->
-
-        <!--TODO: change 'Add' to smthn else in fridge-->
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/topbar"

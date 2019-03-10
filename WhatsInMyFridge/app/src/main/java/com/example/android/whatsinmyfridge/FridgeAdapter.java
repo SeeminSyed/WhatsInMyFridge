@@ -39,7 +39,6 @@ public class FridgeAdapter extends RecyclerView.Adapter<FridgeAdapter.FridgeItem
 
     @Override
     public void onBindViewHolder( final FridgeItemViewHolder fridgeItemHolder, final int i) {
-        // TODO: Complete difference() and then based on that, change the text on "Days left"
         fridgeItemHolder.itemNameView.setText(fridgeList.get(i).name);
         fridgeItemHolder.itemExpView.setText(fridgeList.get(i).expiration.toString());
         int diff = (fridgeList.get(i)).expiration.difference();
@@ -106,7 +105,6 @@ public class FridgeAdapter extends RecyclerView.Adapter<FridgeAdapter.FridgeItem
         public final TextView expiredView;
 
         public FridgeItemViewHolder(View itemView, FridgeAdapter adapter) {
-            // TODO: change the view to use the right background and add textboxes
             super(itemView);
             itemNameView = itemView.findViewById(R.id.item_name);
             itemExpView = itemView.findViewById(R.id.item_expiration);
