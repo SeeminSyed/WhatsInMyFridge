@@ -1,6 +1,10 @@
 package com.example.android.whatsinmyfridge;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
@@ -70,22 +74,45 @@ public class FridgeFragment extends Fragment implements AddFridgeItemDialog.AddF
         view.findViewById(R.id.add_fridge_item_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AddFridgeItemDialog dialogFragment = new AddFridgeItemDialog();
-                dialogFragment.setCallback(FridgeFragment.this);
-                FragmentTransaction ft = getFragmentManager().beginTransaction();
-                Fragment prev = getFragmentManager().findFragmentByTag("dialog");
-                if (prev != null) {
-                    ft.remove(prev);
-                }
-                ft.addToBackStack(null);
-
-                dialogFragment.show(ft, "dialog");
+                createAddFridgeItemDialog();
             }
         });
     }
 
+    private void createAddFridgeItemDialog() {
+        AddFridgeItemDialog dialogFragment = new AddFridgeItemDialog();
+        dialogFragment.setCallback(FridgeFragment.this);
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        Fragment prev = getFragmentManager().findFragmentByTag("dialog");
+        if (prev != null) {
+            ft.remove(prev);
+        }
+        ft.addToBackStack(null);
+
+        dialogFragment.show(ft, "dialog");
+    }
+
     @Override
     public void onAddItem(String name, myDate date) {
-        addToFridge(new FridgeItem(name, date));
+        if(name.isEmpty()) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+
+            builder.setMessage("Food Name cannot be empty")
+                    .setTitle("Alert")
+                    .setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            createAddFridgeItemDialog();
+
+                        }
+                    });
+            AlertDialog dialog = builder.create();
+            dialog.show();
+
+        } else {
+            addToFridge(new FridgeItem(name, date));
+        }
     }
+
 }
+
