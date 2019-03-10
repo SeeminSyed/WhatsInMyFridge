@@ -18,6 +18,7 @@
         android:background="@drawable/rectangular_border"
         >
 
+        <!--TODO: change 'Add' to smthn else in fridge-->
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/topbar"

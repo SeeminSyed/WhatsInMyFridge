@@ -11,7 +11,8 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
+<!-- TODO: add layout to shopping list-->
+        <!--TODO: change 'Add' to smthn else in list-->
         <android.support.constraint.ConstraintLayout
             android:id="@+id/topbar"
             android:layout_width="wrap_content"

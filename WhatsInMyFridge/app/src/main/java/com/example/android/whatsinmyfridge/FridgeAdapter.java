@@ -36,6 +36,7 @@ public class FridgeAdapter extends RecyclerView.Adapter<FridgeAdapter.FridgeItem
 
     @Override
     public void onBindViewHolder( final FridgeItemViewHolder fridgeItemHolder, final int i) {
+        // TODO: Complete difference() and then based on that, change the text on "Days left"
         fridgeItemHolder.itemNameView.setText(fridgeList.get(i).name);
         fridgeItemHolder.itemExpView.setText(fridgeList.get(i).expiration.toString());
         fridgeItemHolder.itemDaysLeftView.setText("" + fridgeList.get(i).daysLeft);

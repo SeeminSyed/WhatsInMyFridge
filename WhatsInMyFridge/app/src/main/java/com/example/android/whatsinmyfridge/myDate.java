@@ -56,7 +56,7 @@ public class myDate {
      * @return  integer, positive, negative or 0 depending on if the date has yet to come
      *   if the date has passed or if it is the same day
      *
-     *   Not Completed
+     *   TODO: Complete difference
      */
     public int difference(myDate date) {
         return 0;
