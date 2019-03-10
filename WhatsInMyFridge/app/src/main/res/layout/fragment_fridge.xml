@@ -18,9 +18,6 @@
 
         </android.support.v7.widget.RecyclerView>
 
-        <include layout="@layout/fridge_item" />
-
-
     </android.support.constraint.ConstraintLayout>
 
 </LinearLayout>
