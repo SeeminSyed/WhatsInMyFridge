@@ -2,6 +2,7 @@ package com.example.android.whatsinmyfridge;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -37,6 +38,21 @@ public class ShoppingListFragment extends Fragment {
         mItems.add(new ShoppingListItem("Deep Orange"));
 
         View rootView = inflater.inflate(R.layout.fragment_shopping_list, container, false);
+
+        rootView.findViewById(R.id.add_shopping_list_item_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AddShoppingListItemDialog dialogFragment = new AddShoppingListItemDialog();
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                Fragment prev = getFragmentManager().findFragmentByTag("add-shopping-dialog");
+                if (prev != null) {
+                    ft.remove(prev);
+                }
+                ft.addToBackStack(null);
+
+                dialogFragment.show(ft, "add-shopping-dialog");
+            }
+        });
 
         // Get a handle to the RecyclerView.
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview_shoppinglist);
