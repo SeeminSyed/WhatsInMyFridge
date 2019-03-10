@@ -29,7 +29,24 @@ public class myDate {
 
     @Override
     public String toString() {
-        return day + "/" + month + "/" + year;
+
+        String stringDay;
+        String stringMonth;
+
+        if (day<10){
+            stringDay= "0" + Integer.toString(day);
+        }
+        else{
+            stringDay= Integer.toString(day);
+        }
+
+        if (month<10){
+            stringMonth= "0" + Integer.toString(month);
+        }
+        else{
+            stringMonth= Integer.toString(month);
+        }
+        return stringDay + "/" + stringMonth + "/" + year;
     }
 
     /**

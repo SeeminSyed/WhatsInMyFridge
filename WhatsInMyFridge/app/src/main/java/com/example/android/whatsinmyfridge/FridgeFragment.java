@@ -26,6 +26,7 @@ public class FridgeFragment extends Fragment implements AddFridgeItemDialog.AddF
         return instance;
     }
 
+
     @Override
     public View onCreateView( LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
 
