@@ -42,7 +42,7 @@ public class ShoppingListFragment extends Fragment {
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview_shoppinglist);
 
         // Create an adapter and supply the data to be displayed.
-        mAdapter = new ShoppingListAdapter(getActivity(), mItems);
+        mAdapter = new ShoppingListAdapter(getActivity(), mItems, this);
 
         // Connect the adapter with the RecyclerView.
         mRecyclerView.setAdapter(mAdapter);

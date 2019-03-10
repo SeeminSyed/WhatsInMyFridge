@@ -1,6 +1,8 @@
 package com.example.android.whatsinmyfridge;
 
 import android.content.Context;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,16 +13,19 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapter.ShoppingListItemViewHolder> {
+public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapter.ShoppingListItemViewHolder>
+    implements ShoppingToFridgeDialog.MoveToFridgeCallback{
 
     private final ArrayList<ShoppingListItem> shoppingListItems;
 
+    private Fragment fragment;
     private LayoutInflater mInflater;
 
 
-    public ShoppingListAdapter(Context context, ArrayList<ShoppingListItem> shoppingListItems) {
+    public ShoppingListAdapter(Context context, ArrayList<ShoppingListItem> shoppingListItems, Fragment fragment) {
         mInflater = LayoutInflater.from(context);
         this.shoppingListItems = shoppingListItems;
+        this.fragment = fragment;
     }
 
     @Override
@@ -49,7 +54,21 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapte
 
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), "Added to Shopping Cart", Toast.LENGTH_SHORT).show();
+
+                ShoppingToFridgeDialog dialogFragment = new ShoppingToFridgeDialog();
+                dialogFragment.setCallback(ShoppingListAdapter.this);
+                dialogFragment.setName(shoppingListItemHolder.itemNameView.getText().toString());
+
+                dialogFragment.setCallback(ShoppingListAdapter.this);
+                FragmentTransaction ft = fragment.getFragmentManager().beginTransaction();
+                Fragment prev = fragment.getFragmentManager().findFragmentByTag("shopping-to-fridge");
+                if (prev != null) {
+                    ft.remove(prev);
+                }
+                ft.addToBackStack(null);
+
+                dialogFragment.show(ft, "shopping-to-fridge");
+
 //
 //                String name = shoppingListItems.get(i).name;
 //                // TODO: need the prompt to add the expiry date
@@ -65,6 +84,12 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapte
     @Override
     public int getItemCount() {
         return shoppingListItems.size();
+    }
+
+    @Override
+    public void onAddItem(String name, myDate date) {
+        FridgeFragment.getInstance().addToFridge(new FridgeItem(name, date));
+        Toast.makeText(fragment.getContext(), "Added to Shopping Cart", Toast.LENGTH_SHORT).show();
     }
 
     // View holder
