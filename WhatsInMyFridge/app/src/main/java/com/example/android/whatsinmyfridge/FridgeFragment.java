@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-public class FridgeFragment extends Fragment {
+public class FridgeFragment extends Fragment implements AddFridgeItemDialog.AddFridgeItemCallback {
 
     private ArrayList<FridgeItem> mItems = new ArrayList<>();
     private RecyclerView mRecyclerView;
@@ -57,6 +57,7 @@ public class FridgeFragment extends Fragment {
 
     public void addToFridge(FridgeItem item) {
         mItems.add(item);
+        refreshList();
     }
 
     public void refreshList() {
@@ -70,6 +71,7 @@ public class FridgeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 AddFridgeItemDialog dialogFragment = new AddFridgeItemDialog();
+                dialogFragment.setCallback(FridgeFragment.this);
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
                 Fragment prev = getFragmentManager().findFragmentByTag("dialog");
                 if (prev != null) {
@@ -80,5 +82,10 @@ public class FridgeFragment extends Fragment {
                 dialogFragment.show(ft, "dialog");
             }
         });
+    }
+
+    @Override
+    public void onAddItem(String name, myDate date) {
+        addToFridge(new FridgeItem(name, date));
     }
 }

@@ -11,13 +11,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.Calendar;
 
 public class AddFridgeItemDialog extends DialogFragment implements DatePickerFragment.DatePickerCallback {
 
+    public interface AddFridgeItemCallback {
+        void onAddItem(String name, myDate date);
+    }
+
+    private AddFridgeItemCallback callback;
+    private EditText foodNameEditText;
     private TextView expiryDateTextView;
+
+    public void setCallback(AddFridgeItemCallback callback) {
+        this.callback = callback;
+    }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -26,9 +37,10 @@ public class AddFridgeItemDialog extends DialogFragment implements DatePickerFra
         LayoutInflater inflater = requireActivity().getLayoutInflater();
 
         final View dialog = inflater.inflate(R.layout.add_item_dialog, null);
+        foodNameEditText = dialog.findViewById(R.id.et_food_name);
         expiryDateTextView = dialog.findViewById(R.id.tv_expiry_date);
         // get String for current day
-        Calendar calendar = Calendar.getInstance();
+        final Calendar calendar = Calendar.getInstance();
         expiryDateTextView.setText("" + calendar.get(Calendar.DAY_OF_MONTH) + "/" +
                 (calendar.get(Calendar.MONTH) + 1) + "/" + calendar.get(Calendar.YEAR));
 
@@ -55,7 +67,13 @@ public class AddFridgeItemDialog extends DialogFragment implements DatePickerFra
                 .setPositiveButton("Add", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        // TODO add to fridge list
+                        String name = foodNameEditText.getText().toString();
+                        String dateString = expiryDateTextView.getText().toString();
+                        String[] dateStrings = dateString.split("/");
+                        myDate date = new myDate(Integer.parseInt(dateStrings[0]),
+                                Integer.parseInt(dateStrings[1]),
+                                Integer.parseInt(dateStrings[2]));
+                        callback.onAddItem(name, date);
                     }
                 })
                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
