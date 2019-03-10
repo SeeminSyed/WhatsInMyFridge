@@ -1,17 +1,13 @@
 package com.example.android.whatsinmyfridge;
 
 import java.util.Calendar;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class myDate {
     public int day;
     public int month;
     public int year;
-
-    Calendar calendar = Calendar.getInstance();
-    int currentDay = calendar.get(Calendar.DAY_OF_MONTH);
-    int currentMonth = calendar.get(Calendar.MONTH);
-    int currentYear = calendar.get(Calendar.YEAR);
-
 
     /**
      * Constructor
@@ -59,6 +55,10 @@ public class myDate {
      *   TODO: Complete difference
      */
     public int difference(myDate date) {
-        return 0;
+        Date d = new Date();
+        Date old = new Date(date.year - 1900, date.month, date.day);
+        long difference = old.getTime() - d.getTime();
+
+        return (int) TimeUnit.DAYS.convert(difference, TimeUnit.MILLISECONDS);
     }
 }

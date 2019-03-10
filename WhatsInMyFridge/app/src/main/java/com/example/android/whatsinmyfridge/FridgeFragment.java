@@ -35,12 +35,13 @@ public class FridgeFragment extends Fragment implements AddFridgeItemDialog.AddF
     public View onCreateView( LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
 
         // this is data for recycler view
-        mItems.add(new FridgeItem("Indigo", new myDate(1, 2, 2019)));
-        mItems.add(new FridgeItem("Red", new myDate(3, 5, 2011)));
-        mItems.add(new FridgeItem("Blue", new myDate(3, 5, 2017)));
-        mItems.add( new FridgeItem("Green", new myDate(3, 5, 2014)));
-        mItems.add(new FridgeItem("Amber", new myDate(3, 5, 2016)));
-        mItems.add(new FridgeItem("Deep Orange", new myDate(3, 5, 2020)));
+        mItems.add(new FridgeItem("Apple", new myDate(1, 2, 2019)));
+        mItems.add(new FridgeItem("Banana", new myDate(3, 3, 2019)));
+        mItems.add(new FridgeItem("Grapes", new myDate(4, 4, 2019)));
+        mItems.add( new FridgeItem("Bread", new myDate(19, 3, 2019)));
+        mItems.add(new FridgeItem("Milk", new myDate(23, 2, 2019)));
+        mItems.add(new FridgeItem("Waffles", new myDate(27, 1, 2019)));
+        mItems.add(new FridgeItem("Kiwi", new myDate(8, 2, 2019)));
 
         View rootView = inflater.inflate(R.layout.fragment_fridge, container, false);
 

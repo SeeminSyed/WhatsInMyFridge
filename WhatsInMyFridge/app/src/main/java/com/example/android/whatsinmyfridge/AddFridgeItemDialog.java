@@ -41,8 +41,10 @@ public class AddFridgeItemDialog extends DialogFragment implements DatePickerFra
         expiryDateTextView = dialog.findViewById(R.id.tv_expiry_date);
         // get String for current day
         final Calendar calendar = Calendar.getInstance();
-        expiryDateTextView.setText("" + calendar.get(Calendar.DAY_OF_MONTH) + "/" +
-                (calendar.get(Calendar.MONTH) + 1) + "/" + calendar.get(Calendar.YEAR));
+        expiryDateTextView.setText(
+                ((calendar.get(Calendar.DAY_OF_MONTH) > 9) ? calendar.get(Calendar.DAY_OF_MONTH): "0" + calendar.get(Calendar.DAY_OF_MONTH)) + "/" +
+                ((calendar.get(Calendar.MONTH) + 1) > 9 ? (calendar.get(Calendar.MONTH) + 1): "0" + (calendar.get(Calendar.MONTH) + 1))
+                + "/" + calendar.get(Calendar.YEAR));
 
         dialog.findViewById(R.id.expiry_date_btn).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,7 +88,9 @@ public class AddFridgeItemDialog extends DialogFragment implements DatePickerFra
 
     @Override
     public void onDateSet(int day, int month, int year) {
-        expiryDateTextView.setText("" + day + "/" + month + "/" + year);
+        expiryDateTextView.setText(((day > 9) ? day: "0" + day)
+                + "/" + ((month > 9) ? month: "0"+month)
+                + "/" + year);
     }
 
 

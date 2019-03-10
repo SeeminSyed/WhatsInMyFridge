@@ -85,6 +85,7 @@ public class FridgeAdapter extends RecyclerView.Adapter<FridgeAdapter.FridgeItem
         public final ImageButton addToCartImageButton;
 
         public FridgeItemViewHolder(View itemView, FridgeAdapter adapter) {
+            // TODO: change the view to use the right background and add textboxes
             super(itemView);
             itemNameView = itemView.findViewById(R.id.item_name);
             itemExpView = itemView.findViewById(R.id.item_expiration);
