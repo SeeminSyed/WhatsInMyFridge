@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="4dp"
-    android:background="@drawable/customborder">
+    android:background="@drawable/customborder"
+    android:padding="4dp">
 
     <TextView
         android:id="@+id/item_expiration"
@@ -60,7 +59,7 @@
         app:layout_constraintBottom_toTopOf="@+id/imageButton_minus"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_shoppingcart" />
+        app:srcCompat="@drawable/ic_action_add_to_cart" />
 
     <ImageButton
         android:id="@+id/imageButton_minus"
