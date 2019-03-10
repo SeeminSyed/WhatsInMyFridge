@@ -43,7 +43,7 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapte
 
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), "Deleted Item from Shopping List", Toast.LENGTH_SHORT).show();
+                Toast.makeText(v.getContext(), "Deleted \"" + shoppingListItems.get(i).name + "\" from Shopping List", Toast.LENGTH_SHORT).show();
                 shoppingListItems.remove(i);
                 ShoppingListAdapter.this.notifyDataSetChanged();
             }
@@ -80,7 +80,7 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapte
     @Override
     public void onAddItem(String name, myDate date) {
         FridgeFragment.getInstance().addToFridge(new FridgeItem(name, date));
-        Toast.makeText(fragment.getContext(), "Added to Shopping Cart", Toast.LENGTH_SHORT).show();
+        Toast.makeText(fragment.getContext(), "Added \"" + name + "\" to Fridge", Toast.LENGTH_SHORT).show();
     }
 
     // View holder

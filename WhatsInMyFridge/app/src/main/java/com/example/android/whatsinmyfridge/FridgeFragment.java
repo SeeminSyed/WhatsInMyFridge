@@ -2,11 +2,17 @@ package com.example.android.whatsinmyfridge;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.PendingIntent;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,6 +21,8 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class FridgeFragment extends Fragment implements AddFridgeItemDialog.AddFridgeItemCallback {
 
@@ -68,6 +76,39 @@ public class FridgeFragment extends Fragment implements AddFridgeItemDialog.AddF
     public void addToFridge(FridgeItem item) {
         mItems.add(item);
         Collections.sort(mItems);
+
+        // check if need to push notification
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        if(sharedPreferences.getBoolean(SettingsFragment.NOTIFICATIONS_ON_KEY, true)) {
+            Date d = new Date();
+            Date expiryDate = new Date(item.expiration.year - 1900, item.expiration.month, item.expiration.day);
+            long difference = expiryDate.getTime() - d.getTime();
+
+            int daysUntilExpiry = (int) TimeUnit.DAYS.convert(difference, TimeUnit.MILLISECONDS) + 1;
+            if(daysUntilExpiry >= 0 && daysUntilExpiry < sharedPreferences.getInt(SettingsFragment.NOTIFICATIONS_DAYS_PRIOR_KEY, 1)) {
+
+                // Create an explicit intent for an Activity in your app
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                PendingIntent pendingIntent = PendingIntent.getActivity(getActivity(), 0, intent, 0);
+
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(getActivity(), "abc")
+                        .setSmallIcon(R.drawable.ic_notification)
+                        .setContentTitle("Expiry Notification")
+                        .setContentText("\"" + item.name + "\" is expiring in " + daysUntilExpiry + (daysUntilExpiry == 1 ? " day" : " days"))
+                        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                        // Set the intent that will fire when the user taps the notification
+                        .setContentIntent(pendingIntent)
+                        .setAutoCancel(true);
+
+                // create notification
+                NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getActivity());
+
+                // notificationId is a unique int for each notification that you must define
+                notificationManager.notify(1, builder.build());
+            }
+        }
+
         refreshList();
     }
 

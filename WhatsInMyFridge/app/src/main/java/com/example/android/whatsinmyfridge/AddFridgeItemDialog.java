@@ -46,7 +46,7 @@ public class AddFridgeItemDialog extends DialogFragment implements DatePickerFra
                 ((calendar.get(Calendar.MONTH) + 1) > 9 ? (calendar.get(Calendar.MONTH) + 1): "0" + (calendar.get(Calendar.MONTH) + 1))
                 + "/" + calendar.get(Calendar.YEAR));
 
-        dialog.findViewById(R.id.expiry_date_btn).setOnClickListener(new View.OnClickListener() {
+        View.OnClickListener expiryDateListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DatePickerFragment datePickerFragment = new DatePickerFragment();
@@ -60,7 +60,10 @@ public class AddFridgeItemDialog extends DialogFragment implements DatePickerFra
 
                 datePickerFragment.show(ft, "calendar-dialog");
             }
-        });
+        };
+
+        dialog.findViewById(R.id.expiry_date_btn).setOnClickListener(expiryDateListener);
+        expiryDateTextView.setOnClickListener(expiryDateListener);
 
         // Inflate and set the layout for the dialog
         // Pass null as the parent view because its going in the dialog layout
