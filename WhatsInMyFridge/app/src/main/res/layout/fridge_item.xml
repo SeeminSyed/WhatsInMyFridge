@@ -8,6 +8,19 @@
     android:padding="4dp">
 
     <TextView
+        android:id="@+id/item_expired_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textAllCaps="false"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/item_name"
+        app:layout_constraintStart_toEndOf="@+id/item_name"
+        android:visibility="invisible"/>
+
+    <TextView
         android:id="@+id/item_expiration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

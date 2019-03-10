@@ -6,4 +6,5 @@
     <color name="shoppingCartYellow">#ECBD55</color>
     <color name="deleteRed">#E66</color>
     <color name="addGreen">#4C4</color>
+    <color name="holo_red_dark">#ffcc0000</color>
 </resources>

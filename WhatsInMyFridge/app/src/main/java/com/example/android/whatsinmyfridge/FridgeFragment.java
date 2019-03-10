@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -57,7 +58,7 @@ public class FridgeFragment extends Fragment implements AddFridgeItemDialog.AddF
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
 
         // Create an adapter and supply the data to be displayed.
-        mAdapter = new FridgeAdapter(getActivity(), mItems);
+        mAdapter = new FridgeAdapter(getActivity(), mItems, this);
 
         // Connect the adapter with the RecyclerView.
         mRecyclerView.setAdapter(mAdapter);
@@ -65,12 +66,16 @@ public class FridgeFragment extends Fragment implements AddFridgeItemDialog.AddF
         // Give the RecyclerView a default layout manager.
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+        Collections.sort(mItems);
+        refreshList();
+
         return rootView;
     }
 
 
     public void addToFridge(FridgeItem item) {
         mItems.add(item);
+        Collections.sort(mItems);
 
         // check if need to push notification
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());

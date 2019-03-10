@@ -1,6 +1,5 @@
 package com.example.android.whatsinmyfridge;
 
-import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -48,15 +47,13 @@ public class myDate {
     /**
      * Gives you the difference between the myDate object entered and the current date.
      *
-     * @param date myDate - date to compare
      * @return  integer, positive, negative or 0 depending on if the date has yet to come
      *   if the date has passed or if it is the same day
      *
-     *   TODO: Complete difference
      */
-    public int difference(myDate date) {
+    public int difference() {
         Date d = new Date();
-        Date old = new Date(date.year - 1900, date.month, date.day);
+        Date old = new Date(this.year - 1900, this.month - 1, this.day);
         long difference = old.getTime() - d.getTime();
 
         return (int) TimeUnit.DAYS.convert(difference, TimeUnit.MILLISECONDS);
