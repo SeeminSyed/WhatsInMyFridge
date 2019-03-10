@@ -28,8 +28,8 @@
         android:layout_marginStart="8dp"
         android:text="02/05/2018"
         android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@+id/item_expiration_label"
-        tools:layout_editor_absoluteY="69dp" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/item_expiration_label"
+        app:layout_constraintStart_toEndOf="@+id/item_expiration_label" />
 
     <TextView
         android:id="@+id/item_name"
