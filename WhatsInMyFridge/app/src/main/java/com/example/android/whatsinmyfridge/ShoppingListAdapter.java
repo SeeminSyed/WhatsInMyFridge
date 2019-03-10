@@ -68,15 +68,6 @@ public class ShoppingListAdapter extends RecyclerView.Adapter<ShoppingListAdapte
                 ft.addToBackStack(null);
 
                 dialogFragment.show(ft, "shopping-to-fridge");
-
-//
-//                String name = shoppingListItems.get(i).name;
-//                // TODO: need the prompt to add the expiry date
-//                myDate date = null;
-//
-//                FridgeFragment.getInstance().addToFridge(new FridgeItem(name, date));
-//                shoppingListItems.remove(i);
-//                ShoppingListAdapter.this.notifyDataSetChanged();
             }
         });
     }
