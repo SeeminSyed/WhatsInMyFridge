@@ -90,7 +90,7 @@ public class FridgeFragment extends Fragment implements AddFridgeItemDialog.AddF
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(getActivity(), "abc")
                         .setSmallIcon(R.drawable.ic_notification)
                         .setContentTitle("Expiry Notification")
-                        .setContentText(item.name + " is expiring in " + daysUntilExpiry + (daysUntilExpiry == 1 ? " day" : " days"))
+                        .setContentText("\"" + item.name + "\" is expiring in " + daysUntilExpiry + (daysUntilExpiry == 1 ? " day" : " days"))
                         .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                         // Set the intent that will fire when the user taps the notification
                         .setContentIntent(pendingIntent)

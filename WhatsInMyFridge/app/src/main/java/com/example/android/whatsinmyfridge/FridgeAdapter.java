@@ -46,7 +46,7 @@ public class FridgeAdapter extends RecyclerView.Adapter<FridgeAdapter.FridgeItem
 
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), "Deleted Item from Fridge", Toast.LENGTH_SHORT).show();
+                Toast.makeText(v.getContext(), "Deleted \"" + fridgeList.get(i).name + "\" from Fridge", Toast.LENGTH_SHORT).show();
                 fridgeList.remove(i);
                 FridgeAdapter.this.notifyDataSetChanged();
             }
@@ -57,7 +57,7 @@ public class FridgeAdapter extends RecyclerView.Adapter<FridgeAdapter.FridgeItem
 
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), "Added to Shopping List", Toast.LENGTH_SHORT).show();
+                Toast.makeText(v.getContext(), "Added \"" + fridgeList.get(i).name + "\" to Shopping List", Toast.LENGTH_SHORT).show();
 
                 String name = fridgeList.get(i).name;
 
