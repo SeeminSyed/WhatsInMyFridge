@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <!--TODO: increase spacing for between name editview and the expiry date, and change color and size of date to match editview-->
     <TextView
         android:id="@+id/tv_food_name"
         android:layout_width="match_parent"
