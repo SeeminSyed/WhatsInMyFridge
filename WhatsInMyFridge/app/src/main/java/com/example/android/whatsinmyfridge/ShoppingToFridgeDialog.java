@@ -47,7 +47,7 @@ public class ShoppingToFridgeDialog extends DialogFragment implements DatePicker
                         ((calendar.get(Calendar.MONTH) + 1) > 9 ? (calendar.get(Calendar.MONTH) + 1): "0" + (calendar.get(Calendar.MONTH) + 1))
                         + "/" + calendar.get(Calendar.YEAR));
 
-        dialog.findViewById(R.id.expiry_date_btn).setOnClickListener(new View.OnClickListener() {
+        View.OnClickListener expiryOnClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DatePickerFragment datePickerFragment = new DatePickerFragment();
@@ -61,7 +61,10 @@ public class ShoppingToFridgeDialog extends DialogFragment implements DatePicker
 
                 datePickerFragment.show(ft, "calendar-dialog");
             }
-        });
+        };
+
+        dialog.findViewById(R.id.expiry_date_btn).setOnClickListener(expiryOnClickListener);
+        expiryDateTextView.setOnClickListener(expiryOnClickListener);
 
         // Inflate and set the layout for the dialog
         // Pass null as the parent view because its going in the dialog layout
