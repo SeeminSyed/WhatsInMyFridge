@@ -70,8 +70,6 @@
             android:inputType="number"
             android:maxLength="2"
             app:layout_constraintBaseline_toBaselineOf="@id/notifyMe"
-
-
             />
 
 

@@ -47,7 +47,6 @@ public class FridgeAdapter extends RecyclerView.Adapter<FridgeAdapter.FridgeItem
             fridgeItemHolder.expiredView.setText("Expired");
             fridgeItemHolder.expiredView.setVisibility(View.VISIBLE);
             fridgeItemHolder.itemDaysLeftView.setText("" + (0 - fridgeList.get(i).daysLeft));
-
             fridgeItemHolder.itemDaysLeftView.setTextColor(fragment.getActivity().getResources().getColor(R.color.holo_red_dark));
             fridgeItemHolder.itemDaysLeftLabelView.setText("Days Ago: ");
         } else if (diff == 0) {
@@ -55,8 +54,10 @@ public class FridgeAdapter extends RecyclerView.Adapter<FridgeAdapter.FridgeItem
             fridgeItemHolder.expiredView.setVisibility(View.VISIBLE);
             fridgeItemHolder.itemDaysLeftView.setText("" + (fridgeList.get(i).daysLeft));
         } else {
+            fridgeItemHolder.itemDaysLeftView.setTextColor(fragment.getActivity().getResources().getColor(R.color.black));
             fridgeItemHolder.expiredView.setVisibility(View.INVISIBLE);
             fridgeItemHolder.itemDaysLeftView.setText("" + (fridgeList.get(i).daysLeft));
+            fridgeItemHolder.itemDaysLeftLabelView.setText("Days Left: ");
         }
 
         // imageButton onclick Deleted Item from Fridge

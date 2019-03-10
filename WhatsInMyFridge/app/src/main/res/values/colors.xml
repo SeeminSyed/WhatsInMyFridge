@@ -7,4 +7,5 @@
     <color name="deleteRed">#E66</color>
     <color name="addGreen">#4C4</color>
     <color name="holo_red_dark">#ffcc0000</color>
+    <color name="black">#000000</color>
 </resources>
