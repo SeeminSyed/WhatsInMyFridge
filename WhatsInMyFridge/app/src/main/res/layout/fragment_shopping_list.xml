@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ShoppingListFragment">
@@ -10,34 +11,37 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
+<!-- TODO: add layout to shopping list-->
+        <!--TODO: change 'Add' to smthn else in list-->
         <android.support.constraint.ConstraintLayout
             android:id="@+id/topbar"
-            android:paddingTop="12dp"
-            android:paddingBottom="12dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent">
+
             <TextView
                 android:id="@+id/tv_shopping_list"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="8dp"
-                android:textSize="24dp"
                 android:text="Shopping List"
-                app:layout_constraintTop_toTopOf="@+id/add_shopping_list_item_btn"
+                android:textSize="24dp"
                 app:layout_constraintBottom_toBottomOf="@+id/add_shopping_list_item_btn"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@id/add_shopping_list_item_btn"/>
+                app:layout_constraintRight_toLeftOf="@id/add_shopping_list_item_btn"
+                app:layout_constraintTop_toTopOf="@+id/add_shopping_list_item_btn" />
+
             <Button
                 android:id="@+id/add_shopping_list_item_btn"
-                android:layout_marginLeft="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
                 android:text="Add"
                 app:layout_constraintLeft_toRightOf="@id/tv_shopping_list"
-                app:layout_constraintRight_toRightOf="parent"/>
+                app:layout_constraintRight_toRightOf="parent" />
         </android.support.constraint.ConstraintLayout>
 
         <android.support.v7.widget.RecyclerView

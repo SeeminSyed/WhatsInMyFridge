@@ -30,12 +30,12 @@ public class ShoppingListFragment extends Fragment {
     public View onCreateView( LayoutInflater inflater,  ViewGroup container,  Bundle savedInstanceState) {
 
         // this is data for recycler view
-        mItems.add(new ShoppingListItem("Indigo"));
-        mItems.add(new ShoppingListItem("Red"));
-        mItems.add(new ShoppingListItem("Blue"));
-        mItems.add(new ShoppingListItem("Green"));
-        mItems.add(new ShoppingListItem("Amber"));
-        mItems.add(new ShoppingListItem("Deep Orange"));
+        mItems.add(new ShoppingListItem("Pineapple"));
+        mItems.add(new ShoppingListItem("Grape Fruit"));
+        mItems.add(new ShoppingListItem("Blue Berries"));
+        mItems.add(new ShoppingListItem("Orange Juice"));
+        mItems.add(new ShoppingListItem("Ketchup"));
+        mItems.add(new ShoppingListItem("Cereal"));
 
         View rootView = inflater.inflate(R.layout.fragment_shopping_list, container, false);
 
